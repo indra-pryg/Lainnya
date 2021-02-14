@@ -1,0 +1,842 @@
+object Form1: TForm1
+  Left = 390
+  Top = 110
+  Caption = 'ANN Function (Least Mean Square Error)'
+  ClientHeight = 543
+  ClientWidth = 840
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesigned
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Chart1: TChart
+    Left = 298
+    Top = 8
+    Width = 343
+    Height = 250
+    Legend.Visible = False
+    Title.Text.Strings = (
+      'Grafik MSE Output')
+    BottomAxis.LabelsFormat.TextAlignment = taCenter
+    DepthAxis.LabelsFormat.TextAlignment = taCenter
+    DepthTopAxis.LabelsFormat.TextAlignment = taCenter
+    LeftAxis.LabelsFormat.TextAlignment = taCenter
+    RightAxis.LabelsFormat.TextAlignment = taCenter
+    TopAxis.LabelsFormat.TextAlignment = taCenter
+    Zoom.Pen.Mode = pmNotXor
+    TabOrder = 0
+    DefaultCanvas = 'TGDIPlusCanvas'
+    ColorPaletteIndex = 13
+    object Series2: TFastLineSeries
+      Marks.Visible = False
+      LinePen.Color = 3513587
+      XValues.Name = 'X'
+      XValues.Order = loAscending
+      YValues.Name = 'Y'
+      YValues.Order = loNone
+      object TeeFunction1: TAverageTeeFunction
+        CalcByValue = False
+      end
+    end
+  end
+  object GroupBox1: TGroupBox
+    Left = 8
+    Top = 8
+    Width = 284
+    Height = 250
+    TabOrder = 1
+    object Label1: TLabel
+      Left = 24
+      Top = 27
+      Width = 67
+      Height = 13
+      Caption = 'Error Refrensi'
+    end
+    object Label3: TLabel
+      Left = 23
+      Top = 54
+      Width = 13
+      Height = 13
+      Caption = 'Uo'
+    end
+    object Label4: TLabel
+      Left = 23
+      Top = 81
+      Width = 20
+      Height = 13
+      Caption = 'Taw'
+    end
+    object Edit1: TEdit
+      Left = 120
+      Top = 24
+      Width = 121
+      Height = 21
+      TabOrder = 0
+    end
+    object Edit3: TEdit
+      Left = 120
+      Top = 51
+      Width = 121
+      Height = 21
+      TabOrder = 1
+    end
+    object Edit4: TEdit
+      Left = 120
+      Top = 78
+      Width = 121
+      Height = 21
+      TabOrder = 2
+    end
+    object ListBox2: TListBox
+      Left = 21
+      Top = 105
+      Width = 220
+      Height = 136
+      ItemHeight = 13
+      TabOrder = 3
+    end
+  end
+  object GroupBox4: TGroupBox
+    Left = 647
+    Top = 347
+    Width = 185
+    Height = 113
+    Caption = 'Pilihan Gerbang Logika'
+    TabOrder = 2
+    object RadioButton1: TRadioButton
+      Left = 24
+      Top = 24
+      Width = 113
+      Height = 17
+      Caption = 'OR'
+      TabOrder = 0
+      OnClick = RadioButton1Click
+    end
+    object RadioButton2: TRadioButton
+      Left = 24
+      Top = 47
+      Width = 113
+      Height = 17
+      Caption = 'AND'
+      TabOrder = 1
+      OnClick = RadioButton2Click
+    end
+    object RadioButton3: TRadioButton
+      Left = 24
+      Top = 70
+      Width = 113
+      Height = 17
+      Caption = 'EX-XOR'
+      TabOrder = 2
+      OnClick = RadioButton3Click
+    end
+  end
+  object Button1: TButton
+    Left = 647
+    Top = 489
+    Width = 98
+    Height = 25
+    Caption = 'Test'
+    TabOrder = 3
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 647
+    Top = 466
+    Width = 98
+    Height = 25
+    Caption = 'Proses'
+    TabOrder = 4
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Left = 647
+    Top = 512
+    Width = 98
+    Height = 25
+    Caption = 'Keluar'
+    TabOrder = 5
+    OnClick = Button3Click
+  end
+  object GroupBox3: TGroupBox
+    Left = 8
+    Top = 264
+    Width = 633
+    Height = 271
+    Caption = 'Tabel Kebenaran'
+    TabOrder = 6
+    object Label7: TLabel
+      Left = 21
+      Top = 32
+      Width = 12
+      Height = 13
+      Caption = 'X1'
+    end
+    object Label8: TLabel
+      Left = 21
+      Top = 72
+      Width = 12
+      Height = 13
+      Caption = 'X2'
+    end
+    object Label13: TLabel
+      Left = 21
+      Top = 112
+      Width = 12
+      Height = 13
+      Caption = 'X3'
+    end
+    object Label14: TLabel
+      Left = 21
+      Top = 152
+      Width = 12
+      Height = 13
+      Caption = 'X4'
+    end
+    object Label16: TLabel
+      Left = 85
+      Top = 152
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label17: TLabel
+      Left = 120
+      Top = 152
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label18: TLabel
+      Left = 158
+      Top = 152
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label19: TLabel
+      Left = 190
+      Top = 152
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label25: TLabel
+      Left = 258
+      Top = 152
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label26: TLabel
+      Left = 296
+      Top = 152
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label27: TLabel
+      Left = 328
+      Top = 152
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label28: TLabel
+      Left = 366
+      Top = 152
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label29: TLabel
+      Left = 398
+      Top = 152
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label30: TLabel
+      Left = 223
+      Top = 152
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label31: TLabel
+      Left = 433
+      Top = 152
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label32: TLabel
+      Left = 468
+      Top = 152
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label33: TLabel
+      Left = 501
+      Top = 152
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label34: TLabel
+      Left = 536
+      Top = 152
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label35: TLabel
+      Left = 574
+      Top = 152
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label15: TLabel
+      Left = 608
+      Top = 152
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label36: TLabel
+      Left = 85
+      Top = 112
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label37: TLabel
+      Left = 120
+      Top = 112
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label38: TLabel
+      Left = 158
+      Top = 112
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label39: TLabel
+      Left = 190
+      Top = 112
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label44: TLabel
+      Left = 223
+      Top = 112
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label45: TLabel
+      Left = 258
+      Top = 112
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label46: TLabel
+      Left = 296
+      Top = 112
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label47: TLabel
+      Left = 328
+      Top = 112
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label48: TLabel
+      Left = 366
+      Top = 112
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label49: TLabel
+      Left = 398
+      Top = 112
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label50: TLabel
+      Left = 433
+      Top = 112
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label51: TLabel
+      Left = 468
+      Top = 112
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label52: TLabel
+      Left = 501
+      Top = 112
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label53: TLabel
+      Left = 536
+      Top = 112
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label54: TLabel
+      Left = 574
+      Top = 112
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label55: TLabel
+      Left = 608
+      Top = 112
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label56: TLabel
+      Left = 85
+      Top = 72
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label57: TLabel
+      Left = 120
+      Top = 72
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label58: TLabel
+      Left = 158
+      Top = 72
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label59: TLabel
+      Left = 190
+      Top = 72
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label60: TLabel
+      Left = 223
+      Top = 72
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label61: TLabel
+      Left = 258
+      Top = 72
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label62: TLabel
+      Left = 296
+      Top = 72
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label63: TLabel
+      Left = 328
+      Top = 72
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label64: TLabel
+      Left = 366
+      Top = 72
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label65: TLabel
+      Left = 398
+      Top = 72
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label66: TLabel
+      Left = 433
+      Top = 72
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label67: TLabel
+      Left = 468
+      Top = 72
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label68: TLabel
+      Left = 501
+      Top = 72
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label69: TLabel
+      Left = 536
+      Top = 72
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label70: TLabel
+      Left = 574
+      Top = 72
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label71: TLabel
+      Left = 608
+      Top = 72
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label72: TLabel
+      Left = 85
+      Top = 32
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label73: TLabel
+      Left = 120
+      Top = 32
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label74: TLabel
+      Left = 158
+      Top = 32
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label75: TLabel
+      Left = 190
+      Top = 32
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label76: TLabel
+      Left = 223
+      Top = 32
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label77: TLabel
+      Left = 258
+      Top = 32
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label78: TLabel
+      Left = 296
+      Top = 32
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label79: TLabel
+      Left = 328
+      Top = 32
+      Width = 6
+      Height = 13
+      Caption = '0'
+    end
+    object Label80: TLabel
+      Left = 363
+      Top = 32
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label81: TLabel
+      Left = 398
+      Top = 32
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label82: TLabel
+      Left = 433
+      Top = 32
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label83: TLabel
+      Left = 468
+      Top = 32
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label84: TLabel
+      Left = 501
+      Top = 32
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label85: TLabel
+      Left = 536
+      Top = 32
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label86: TLabel
+      Left = 574
+      Top = 32
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object Label87: TLabel
+      Left = 608
+      Top = 32
+      Width = 6
+      Height = 13
+      Caption = '1'
+    end
+    object TLabel
+      Left = 296
+      Top = 184
+      Width = 3
+      Height = 13
+    end
+    object Label20: TLabel
+      Left = 260
+      Top = 240
+      Width = 4
+      Height = 13
+      Caption = '-'
+    end
+    object Label21: TLabel
+      Left = 295
+      Top = 240
+      Width = 4
+      Height = 13
+      Caption = '-'
+    end
+    object Label22: TLabel
+      Left = 330
+      Top = 240
+      Width = 4
+      Height = 13
+      Caption = '-'
+    end
+    object Label23: TLabel
+      Left = 368
+      Top = 240
+      Width = 4
+      Height = 13
+      Caption = '-'
+    end
+    object Label24: TLabel
+      Left = 400
+      Top = 240
+      Width = 4
+      Height = 13
+      Caption = '-'
+    end
+    object Label40: TLabel
+      Left = 433
+      Top = 240
+      Width = 4
+      Height = 13
+      Caption = '-'
+    end
+    object Label41: TLabel
+      Left = 470
+      Top = 240
+      Width = 4
+      Height = 13
+      Caption = '-'
+    end
+    object Label42: TLabel
+      Left = 503
+      Top = 240
+      Width = 4
+      Height = 13
+      Caption = '-'
+    end
+    object Label43: TLabel
+      Left = 536
+      Top = 240
+      Width = 4
+      Height = 13
+      Caption = '-'
+    end
+    object Label88: TLabel
+      Left = 574
+      Top = 240
+      Width = 4
+      Height = 13
+      Caption = '-'
+    end
+    object Label90: TLabel
+      Left = 608
+      Top = 240
+      Width = 4
+      Height = 13
+      Caption = '-'
+    end
+    object Label96: TLabel
+      Left = 85
+      Top = 240
+      Width = 4
+      Height = 13
+      Caption = '-'
+    end
+    object Label97: TLabel
+      Left = 120
+      Top = 240
+      Width = 4
+      Height = 13
+      Caption = '-'
+    end
+    object Label98: TLabel
+      Left = 158
+      Top = 240
+      Width = 4
+      Height = 13
+      Caption = '-'
+    end
+    object Label99: TLabel
+      Left = 190
+      Top = 240
+      Width = 4
+      Height = 13
+      Caption = '-'
+    end
+    object Label100: TLabel
+      Left = 223
+      Top = 240
+      Width = 4
+      Height = 13
+      Caption = '-'
+    end
+    object Label112: TLabel
+      Left = 21
+      Top = 240
+      Width = 32
+      Height = 13
+      Caption = 'Target'
+    end
+  end
+  object ListBox1: TListBox
+    Left = 647
+    Top = 8
+    Width = 185
+    Height = 250
+    ItemHeight = 13
+    TabOrder = 7
+  end
+  object ListBox3: TListBox
+    Left = 647
+    Top = 268
+    Width = 185
+    Height = 73
+    ItemHeight = 13
+    TabOrder = 8
+  end
+  object Button6: TButton
+    Left = 751
+    Top = 489
+    Width = 75
+    Height = 25
+    Caption = 'Load'
+    TabOrder = 9
+    OnClick = Button6Click
+  end
+  object Button5: TButton
+    Left = 751
+    Top = 512
+    Width = 75
+    Height = 25
+    Caption = 'Clear'
+    TabOrder = 10
+    OnClick = Button5Click
+  end
+  object Button8: TButton
+    Left = 751
+    Top = 466
+    Width = 75
+    Height = 25
+    Caption = 'Save'
+    TabOrder = 11
+    OnClick = Button8Click
+  end
+  object SaveDialog1: TSaveDialog
+    Left = 479
+    Top = 459
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 207
+    Top = 451
+  end
+  object SaveDialog2: TSaveDialog
+    Left = 520
+    Top = 464
+  end
+  object SaveDialog3: TSaveDialog
+    Left = 560
+    Top = 456
+  end
+  object OpenDialog2: TOpenDialog
+    Left = 272
+    Top = 464
+  end
+  object OpenDialog3: TOpenDialog
+    Left = 328
+    Top = 472
+  end
+end

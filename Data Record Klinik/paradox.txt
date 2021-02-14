@@ -1,0 +1,54 @@
+this is the way to adjust the autoinc-value in paradox to any value you want
+
+unit pd_autoinc_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls, Grids, DBGrids, Db, DBTables;
+
+type
+  TForm1 = class(TForm)
+    Button1: TButton;
+    Edit1: TEdit;
+    Table1: TTable;
+    DataSource1: TDataSource;
+    DBGrid1: TDBGrid;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private-Deklarationen }
+  public
+    { Public-Deklarationen }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.DFM}
+
+
+Procedure SetAutoInc(filename : string; Value : Longint);
+var
+  mystream : tfilestream;
+begin
+  mystream := tfilestream.create(filename,
+              fmOpenWrite + fmShareExclusive);
+  try
+    mystream.Seek(73, soFromBeginning);
+    mystream.Writebuffer(Value, SizeOf(Value));
+  finally
+    mystream.Free;
+  end;
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+  Table1.Close;
+  SetAutoInc('C:\Test\Test.db',StrtoInt(edit1.text));
+  Table1.Open;
+end;
+
+end.
